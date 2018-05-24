@@ -8,7 +8,7 @@
                     <p>类型: {{ movieDetail.genres.join(' / ') }}</p>
                     <p>导演：{{ movieDetail.directors | extractNames }}</p>
                     <p>主演：{{ movieDetail.casts | extractNames }}</p>     
-                    <p>评分：{{ movieDetail.rating.average }} ({{ movieDetail.ratings_count }}人)</p> 
+                    <p>评分：{{ movieDetail.rating.average | toStars }} {{ movieDetail.rating.average }} ({{ movieDetail.ratings_count }}人)</p> 
                 </div>
                 <div class="right">
                     <img :src="movieDetail.images.small" alt="img">            
@@ -68,6 +68,28 @@
                 } else {
                     return '☆ Star'
                 }
+            },
+            toStars(rating) {
+                switch(Math.floor(rating/2)) {
+                    case 0:
+                        return '☆☆☆☆☆';
+                        break;
+                    case 1:
+                        return '★☆☆☆☆';
+                        break;
+                    case 2:
+                        return '★★☆☆☆';
+                        break;
+                    case 3:
+                        return '★★★☆☆';
+                        break;
+                    case 4:
+                        return '★★★★☆';
+                        break;
+                    default:
+                        return '★★★★★';
+                        break;
+                }
             }
         },
         mounted() {
@@ -114,7 +136,7 @@
     }
 
     .right {
-        width: 29%;
+        width: 28%;
         text-align: left;
         display: inline-block;    
         vertical-align: top;    
@@ -159,10 +181,28 @@
     }
 
     @media only screen and (max-device-width: 480px) {
-    modal {
-      width: 80%;
+        .modal {
+            width: 80%;
+        }
+        .left {
+            width: 100%;
+        }
+        .right {
+            width: 100%;
+        }
+        p {
+            font-size: 18px;
+        }
+
     }
+    @media only screen and (max-device-width: 640px) {
+        .modal {
+            width: 80%;
+        }
 
+        p {
+            font-size: 22px;
+        }
 
-}
+    }
 </style>

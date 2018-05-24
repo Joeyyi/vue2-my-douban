@@ -1,7 +1,7 @@
 <template>
   <div>
       <ul>
-        <li><button @click="getMovieList('in_theaters')">正在上映</button></li>
+        <li><button @click="getMovieList('in_theaters')">正在热映</button></li>
         <li><button @click="getMovieList('coming_soon')">即将上映</button></li>
         <li><button @click="getMovieList('top250')">Top 250</button></li>
       </ul>

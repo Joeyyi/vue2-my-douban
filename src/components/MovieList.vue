@@ -48,12 +48,19 @@ export default {
   }
   ul {
     text-align: center;
+    padding: 0;
+    margin: 0;
   }
   
   li {
     list-style: none;
     display: inline-block;
     width: 25%;
+    vertical-align: top;
+  }
+
+  p {
+    text-align: center;
   }
 
   img {
@@ -64,6 +71,22 @@ export default {
 @media only screen and (max-device-width: 480px) {
     li {
       width: 50%;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+
+}
+
+@media only screen and (max-device-width: 640px) {
+    li {
+      width: 33%;
+    }
+
+    p {
+      font-size: 22px;
     }
 
 
